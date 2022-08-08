@@ -44,8 +44,8 @@ export class ArticlesService {
     })
   }
 
-  findAll(): Promise<Article[]> {
-    const result = this.client
+  findAll() {
+    return this.client
       .send<{ 
         id: number,
         title: string,
@@ -55,8 +55,5 @@ export class ArticlesService {
           name: string
         }
       }[]>({ cmd: "findOne" }, { articles: this.articles })
-      .toPromise()
-
-    return result
   }
 }
